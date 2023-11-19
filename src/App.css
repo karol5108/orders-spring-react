@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+.navbar-brand {
+  font-size: 24px; /* Rozmiar czcionki */
+  font-weight: bold; /* Pogrubienie tekstu */
+  color: #333; /* Kolor tekstu */
+  transition: color 0.3s; /* Animacja zmiany koloru tekstu */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Styl po najechaniu myszką na navbar-brand */
+.navbar-brand:hover {
+  color: #007bff; /* Kolor tekstu po najechaniu myszką */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Stylizacja tabeli */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Stylizacja tabeli z obramowaniem */
+.table-bordered {
+  border: 1px solid #ccc;
+}
+
+/* Stylizacja tabeli z podziałem na wiersze */
+.table-striped {
+  background-color: #f2f2f2;
+}
+
+/* Stylizacja przycisków */
+.btn {
+  background-color: #007bff;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Styl po najechaniu myszką na przycisk */
+.btn:hover {
+  background-color: #0056b3;
 }
