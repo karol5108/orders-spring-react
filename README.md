@@ -26,7 +26,7 @@ Projekt składa się z dwóch części: części backendowej napisanej w Spring 
 
 2. **Frontend:**
 
-   - Przejdź do katalogu `react-app` w terminalu.
+   - Przejdź do katalogu `src` w terminalu.
    - Uruchom `npm install` w celu zainstalowania wszystkich zależności.
    - Uruchom `npm start` aby uruchomić serwer deweloperski React.
 
