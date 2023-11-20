@@ -1,0 +1,43 @@
+.navbar-brand {
+  font-size: 24px; /* Rozmiar czcionki */
+  font-weight: bold; /* Pogrubienie tekstu */
+  color: #333; /* Kolor tekstu */
+  transition: color 0.3s; /* Animacja zmiany koloru tekstu */
+}
+
+/* Styl po najechaniu myszką na navbar-brand */
+.navbar-brand:hover {
+  color: #007bff; /* Kolor tekstu po najechaniu myszką */
+}
+
+/* Stylizacja tabeli */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+/* Stylizacja tabeli z obramowaniem */
+.table-bordered {
+  border: 1px solid #ccc;
+}
+
+/* Stylizacja tabeli z podziałem na wiersze */
+.table-striped {
+  background-color: #f2f2f2;
+}
+
+/* Stylizacja przycisków */
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Styl po najechaniu myszką na przycisk */
+.btn:hover {
+  background-color: #0056b3;
+}
