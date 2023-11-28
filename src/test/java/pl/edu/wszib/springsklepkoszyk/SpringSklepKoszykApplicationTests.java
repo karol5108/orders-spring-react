@@ -309,9 +309,6 @@ class SpringSklepKoszykApplicationTests {
 		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
 		orderRepo.save(testOrder);
 
-
-
-
 		// act and assert
 		mockMvc.perform(put("/orders/{orderId}/remove-product/{productId}"
 						, testOrder.getId(), product3.getId()))
