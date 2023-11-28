@@ -205,6 +205,7 @@ public class OrderController {
         if (itemToRemove.getQuantity() == newQuantity){
             return ResponseEntity.ok(order);
         }else {
+            if(newQuantity > 0){
             itemToRemove.setQuantity(newQuantity);
             BigDecimal quantity = BigDecimal.valueOf(newQuantity);
             itemToRemove.setProductValue(itemToRemove.getProduct().getPrice().multiply(quantity));
@@ -213,6 +214,14 @@ public class OrderController {
             order.setModifyDate(Instant.now());
 
             orderRepo.save(order);
+            }else {
+                order.getLines().remove(itemToRemove);
+                orderItemRepo.delete(itemToRemove);
+                order.setOrderValue(calculateOrderValue(order.getLines()));
+                order.setModifyDate(Instant.now());
+
+                orderRepo.save(order);
+            }
         }
         return ResponseEntity.ok(order);
     }

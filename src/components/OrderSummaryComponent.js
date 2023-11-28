@@ -124,12 +124,19 @@ const toChangeQuantity = () =>{
 }
 
 const handleToChangeQuantity = (orderId, productId, newQuantity) =>{
-  OrderServiceInstance.changeQuantity(orderId, productId, newQuantity).then((response) =>{
-    setOrder(response.data);
-    setChangeQuantity(false);
-  }).catch((error) => {
-    console.log(error);
-  })
+ 
+    
+    if (currentOrder.lines.length === 1 && newQuantity < 1){
+      deleteOrder(orderId);
+      setChangeQuantity(false);
+    }else{
+      OrderServiceInstance.changeQuantity(orderId, productId, newQuantity).then((response) =>{
+      setOrder(response.data);
+      setChangeQuantity(false);  
+    }).catch((error) => {
+        console.log(error);
+      })
+    }
 } 
 
 const tdToChangeQuantity = (lineProductId) =>{
