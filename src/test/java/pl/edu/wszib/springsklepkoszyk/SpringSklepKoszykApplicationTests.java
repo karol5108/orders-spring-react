@@ -1,6 +1,7 @@
 package pl.edu.wszib.springsklepkoszyk;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -147,7 +148,11 @@ class SpringSklepKoszykApplicationTests {
 		Set<OrderItem> testOrderItems = new HashSet<>();
 		testOrderItems.add(testOrderItem);
 
-		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
+		Order testOrder = new Order();
+		testOrder.setCreateDate(Instant.now());
+		testOrder.setModifyDate(Instant.now());
+		testOrder.setLines(testOrderItems);
+		testOrder.setOrderValue(product2.getPrice());
 		orderRepo.save(testOrder);
 
 
@@ -178,7 +183,11 @@ class SpringSklepKoszykApplicationTests {
 		Set<OrderItem> testOrderItems = new HashSet<>();
 		testOrderItems.add(testOrderItem);
 
-		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
+		Order testOrder = new Order();
+		testOrder.setCreateDate(Instant.now());
+		testOrder.setModifyDate(Instant.now());
+		testOrder.setLines(testOrderItems);
+		testOrder.setOrderValue(product2.getPrice());
 		orderRepo.save(testOrder);
 
 		Product product3 = productRepo.findById(3L).orElseThrow(()->
@@ -192,12 +201,12 @@ class SpringSklepKoszykApplicationTests {
 				.andExpect(jsonPath("$.id").isNotEmpty())
 				.andExpect(jsonPath("$.createDate").isNotEmpty())
 				.andExpect(jsonPath("$.modifyDate").isNotEmpty())
-				.andExpect(jsonPath("$.lines[1].product.name").value(product2.getName()))
-				.andExpect(jsonPath("$.lines[1].productValue").value(product2.getPrice()))
-				.andExpect(jsonPath("$.lines[1].quantity").value(1))
-				.andExpect(jsonPath("$.lines[0].product.name").value(product3.getName()))
-				.andExpect(jsonPath("$.lines[0].productValue").value(product3.getPrice()))
+				.andExpect(jsonPath("$.lines[0].product.name").value(product2.getName()))
+				.andExpect(jsonPath("$.lines[0].productValue").value(product2.getPrice()))
 				.andExpect(jsonPath("$.lines[0].quantity").value(1))
+				.andExpect(jsonPath("$.lines[1].product.name").value(product3.getName()))
+				.andExpect(jsonPath("$.lines[1].productValue").value(product3.getPrice()))
+				.andExpect(jsonPath("$.lines[1].quantity").value(1))
 				.andExpect(jsonPath("$.orderValue").value(product2.getPrice().add(product3.getPrice())));
 	}
 
@@ -214,9 +223,12 @@ class SpringSklepKoszykApplicationTests {
 		Set<OrderItem> testOrderItems = new HashSet<>();
 		testOrderItems.add(testOrderItem);
 
-		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
+		Order testOrder = new Order();
+		testOrder.setCreateDate(Instant.now());
+		testOrder.setModifyDate(Instant.now());
+		testOrder.setLines(testOrderItems);
+		testOrder.setOrderValue(product2.getPrice());
 		orderRepo.save(testOrder);
-
 		// act and assert
 		mockMvc.perform(put("/orders/{orderId}/increment/{productId}"
 						, testOrder.getId(), product2.getId()))
@@ -242,7 +254,11 @@ class SpringSklepKoszykApplicationTests {
 		Set<OrderItem> testOrderItems = new HashSet<>();
 		testOrderItems.add(testOrderItem);
 
-		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
+		Order testOrder = new Order();
+		testOrder.setCreateDate(Instant.now());
+		testOrder.setModifyDate(Instant.now());
+		testOrder.setLines(testOrderItems);
+		testOrder.setOrderValue(product2.getPrice());
 		orderRepo.save(testOrder);
 
 		// act and assert
@@ -270,7 +286,11 @@ class SpringSklepKoszykApplicationTests {
 		Set<OrderItem> testOrderItems = new HashSet<>();
 		testOrderItems.add(testOrderItem);
 
-		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
+		Order testOrder = new Order();
+		testOrder.setCreateDate(Instant.now());
+		testOrder.setModifyDate(Instant.now());
+		testOrder.setLines(testOrderItems);
+		testOrder.setOrderValue(product2.getPrice());
 		orderRepo.save(testOrder);
 
 		// act and assert
@@ -306,7 +326,11 @@ class SpringSklepKoszykApplicationTests {
 		testOrderItems.add(testOrderItem);
 		testOrderItems.add(test2OrderItem);
 
-		Order testOrder = new Order(1L, Instant.now(), Instant.now(), testOrderItems,product2.getPrice());
+		Order testOrder = new Order();
+		testOrder.setCreateDate(Instant.now());
+		testOrder.setModifyDate(Instant.now());
+		testOrder.setLines(testOrderItems);
+		testOrder.setOrderValue(product2.getPrice());
 		orderRepo.save(testOrder);
 
 		// act and assert
